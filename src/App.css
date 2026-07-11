@@ -1,0 +1,172 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: gray;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.headerSec {
+  width: 100%;
+  min-height: 75px;
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111827;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.headerSec h1 {
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+}
+
+.headerSec h1 span {
+  color: gold;
+  font-weight: 900;
+  font-size: 1.55rem;
+}
+.headerSec ul {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  list-style: none;
+  padding: 15px 25px;
+  overflow: visible;
+}
+
+.headerSec ul li {
+  position: relative;
+  overflow: visible;
+}
+
+.headerSec ul li a {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+
+  display: inline-block;
+  position: relative;
+
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.headerSec ul li a:hover {
+  color: gold;
+  transform: scale(1.2);
+  z-index: 10;
+}
+/* =========================
+   HOME
+========================= */
+
+.homeSec {
+  width: 100%;
+  min-height: calc(100vh - 145px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f7fb;
+}
+
+.homeSec h2 {
+  font-size: 50px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footerSec {
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.footerSec h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 768px) {
+  .headerSec {
+    padding: 0 4%;
+  }
+
+  .headerSec h1 {
+    font-size: 23px;
+  }
+
+  .headerSec ul {
+    gap: 18px;
+  }
+
+  .headerSec ul li a {
+    font-size: 18px;
+  }
+
+  .homeSec h2 {
+    font-size: 40px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 600px) {
+  .headerSec {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .headerSec ul {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px 25px;
+  }
+
+  .homeSec {
+    min-height: calc(100vh - 180px);
+  }
+
+  .homeSec h2 {
+    font-size: 35px;
+  }
+}

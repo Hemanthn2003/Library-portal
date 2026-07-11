@@ -2,8 +2,8 @@ import React from 'react'
 import './App.css'
 const Home = () => {
   return (
-    <div>
-      
+    <div className='homeSec'>
+      <h2>Home</h2>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 const Students = () => {
   return (
-    <div>
+    <div className='studentSec'>
       
     </div>
   )

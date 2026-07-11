@@ -2,9 +2,9 @@ import React from 'react'
 import './App.css'
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
+    <div className='footerSec'>
+<h2>© 2026 Library Portal. All Rights Reserved.</h2>   
+ </div>
   )
 }
 
