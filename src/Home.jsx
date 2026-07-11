@@ -2,6 +2,9 @@ import React from 'react'
 import VDIT from './assets/VDIT.jpg'
 import Sudhakar from './assets/Sudhakar.jpg'
 import Deepa from './assets/Deepa.jpg'
+import EngineerHuman from './assets/Engineer-Human.jpg'
+import MechanicalEngineering from './assets/Mechanical-Engineering.jpg'
+import Zenandtheartofmotorcyclemaintenance from './assets/Zen-and-the-art-of-motorcycle-maintenance.jpg'
 
 import LibraryImg from './assets/Library.jpg'
 import './App.css'
@@ -103,6 +106,26 @@ const Home = () => {
             <p><span>Name: </span> Deepa</p>
             <p><span>Role: </span> Assistant Librarian</p>
             <p><span>Id  : </span>REF65782VDIT7514</p>
+        </div>
+    </div>
+</section>
+<section className='popularBooks'> 
+    <h2>Popular Books we have</h2>
+    <div className='bookCard'>
+        <div>
+            <img src={EngineerHuman} alt="Engineer Human" />
+            <p><span>Book Name:    </span>To Engineer Is Human</p>
+            <p><span>Author Name:  </span>Henry Petroski</p>
+        </div>
+        <div>
+            <img src={MechanicalEngineering} alt="Mechanical Engineering " />
+            <p><span>Book Name:    </span>Mechanical Engineering</p>
+            <p><span>Author Name:  </span>Mark Huber</p>
+        </div>
+        <div>
+            <img src={Zenandtheartofmotorcyclemaintenance} alt="Zen And The Art Of Motorcycle Maintenance" />
+            <p><span>Book Name:    </span>Zen And The Art Of Motorcycle Maintenance</p>
+            <p><span>Author Name:  </span>Robern M Pirsig</p>
         </div>
     </div>
 </section>
