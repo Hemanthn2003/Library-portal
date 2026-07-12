@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.css'
+import './Pages.css'
 const Admin = () => {
   return (
     <div>
-      
+      <p>Admin</p>
     </div>
   )
 }

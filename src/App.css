@@ -651,74 +651,63 @@ a {
 
 
 /* =========================
-   TABLET
+   TABLET AND MOBILE SLIDER
 ========================= */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1024px) {
 
-  .popularBooks {
-    padding: 55px 5%;
-  }
+    .popularBooks {
+        overflow: hidden;
+    }
 
-  .popularBooks > h2 {
-    margin-bottom: 40px;
+    .bookCard {
+        width: 300%;
+        display: flex;
+        justify-content: flex-start;
+        
+  gap: 0;
+        animation: bookSlider 12s infinite;
+    }
 
-    font-size: 32px;
-  }
+    .bookCard > div {
+        width: 33.3333%;
+        flex: 0 0 33.3333%;
+        box-sizing: border-box;
+        
+    }
 
-  .bookCard {
-    gap: 30px;
-  }
+    @keyframes bookSlider {
 
-  .bookCard > div {
-    width: 300px;
-  }
+        /* BOOK 1 */
 
-  .bookCard img {
-    height: 320px;
-  }
-}
+        0%,
+        28% {
+            transform: translateX(0);
+        }
 
 
-/* =========================
-   MOBILE
-========================= */
+        /* BOOK 2 */
 
-@media screen and (max-width: 600px) {
+        33%,
+        61% {
+            transform: translateX(-33.3333%);
+        }
 
-  .popularBooks {
-    padding: 50px 5%;
-  }
 
-  .popularBooks > h2 {
-    margin-bottom: 35px;
+        /* BOOK 3 */
 
-    font-size: 29px;
+        66%,
+        94% {
+            transform: translateX(-66.6666%);
+        }
 
-    line-height: 1.4;
-  }
 
-  .bookCard {
-    flex-direction: column;
-    align-items: center;
+        /* BACK TO BOOK 1 */
 
-    gap: 30px;
-  }
-
-  .bookCard > div {
-    width: 100%;
-    max-width: 350px;
-
-    padding: 20px;
-  }
-
-  .bookCard img {
-    height: 320px;
-  }
-
-  .bookCard p {
-    font-size: 15px;
-  }
+        100% {
+            transform: translateX(0);
+        }
+    }
 }
 /* =========================
    FOOTER

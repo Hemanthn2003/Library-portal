@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.css'
+import './Pages.css'
 const LibraryStudents = () => {
   return (
     <div>
-      
+      <h2>Library Students</h2>
     </div>
   )
 }
