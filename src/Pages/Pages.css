@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#eef2f8;
+
+    font-family:"Inter",sans-serif;
+
+}
+
+/*=========================
+      STUDENTS GRID
+==========================*/
+
+.studentsContainer{
+
+    width:95%;
+
+    max-width:1800px;
+
+    margin:45px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:28px;
+
+}
+
+/*=========================
+      STUDENT CARD
+==========================*/
+
+.studentCard{
+
+    background:#111827;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+
+    transition:.35s ease;
+
+    display:flex;
+
+    flex-direction:column;
+
+    border-top:5px solid #f5b400;
+
+}
+
+.studentCard:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+/*=========================
+        IMAGE BOX
+==========================*/
+
+.imageBox{
+
+    width:100%;
+
+    height:260px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:#111827;
+
+}
+
+/*=========================
+      STUDENT IMAGE
+==========================*/
+
+.studentImage{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    background:white;
+
+}
+
+/*=========================
+       STUDENT INFO
+==========================*/
+
+.studentInfo{
+
+    padding:22px;
+
+    flex:1;
+
+}
+
+/*=========================
+      STUDENT NAME
+==========================*/
+
+.studentInfo h2{
+
+    text-align:center;
+
+    color:#ffffff;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+}
+
+/*=========================
+      STUDENT DETAILS
+==========================*/
+
+.studentInfo p{
+
+    margin:14px 0;
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    font-family:"Inter",sans-serif;
+
+}
+
+/*=========================
+        LABELS
+==========================*/
+
+.studentInfo strong{
+
+    color:#f5b400;
+
+    font-weight:700;
+
+}
+
+/*=========================
+      ACTIVE STATUS
+==========================*/
+
+.active{
+
+    color:#1ed760;
+
+    font-weight:700;
+
+    margin-left:6px;
+
+}
+
+/*=========================
+     INACTIVE STATUS
+==========================*/
+
+.inactive{
+
+    color:#ff4b4b;
+
+    font-weight:700;
+
+    margin-left:6px;
+
+}
+
+/*=========================
+     LARGE LAPTOP
+==========================*/
+
+@media(max-width:1600px){
+
+.studentsContainer{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+/*=========================
+         TABLET
+==========================*/
+
+@media(max-width:992px){
+
+.studentsContainer{
+
+grid-template-columns:repeat(3,1fr);
+
+gap:22px;
+
+}
+
+.imageBox{
+
+height:230px;
+
+}
+
+.studentInfo h2{
+
+font-size:24px;
+
+}
+
+.studentInfo p{
+
+font-size:16px;
+
+}
+
+}
+
+/*=========================
+         MOBILE
+==========================*/
+
+@media(max-width:768px){
+
+.studentsContainer{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+width:96%;
+
+}
+
+.imageBox{
+
+height:190px;
+
+padding:15px;
+
+}
+
+.studentInfo{
+
+padding:16px;
+
+}
+
+.studentInfo h2{
+
+font-size:21px;
+
+}
+
+.studentInfo p{
+
+font-size:15px;
+
+}
+
+}
+
+/*=========================
+      SMALL MOBILE
+==========================*/
+
+@media(max-width:480px){
+
+.studentsContainer{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+}
+
+.imageBox{
+
+height:160px;
+
+padding:10px;
+
+}
+
+.studentInfo{
+
+padding:12px;
+
+}
+
+.studentInfo h2{
+
+font-size:18px;
+
+margin-bottom:12px;
+
+}
+
+.studentInfo p{
+
+font-size:13px;
+
+margin:8px 0;
+
+}
+
+}
+/*=========================
+        PAGE HEADER
+=========================*/
+
+.pageHeader{
+
+    width:95%;
+    max-width:1700px;
+
+    margin:35px auto;
+
+    background:#111827;
+
+    border-radius:18px;
+
+    border-top:5px solid #f5b400;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.pageHeader h1{
+
+    color:#ffffff;
+
+    font-family:"Poppins",sans-serif;
+
+    font-size:2.4rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-align:center;
+
+}
+
+/*=========================
+        TABLET
+=========================*/
+
+@media(max-width:768px){
+
+.pageHeader{
+
+padding:18px;
+
+}
+
+.pageHeader h1{
+
+font-size:2rem;
+
+}
+
+}
+
+/*=========================
+      MOBILE
+=========================*/
+
+@media(max-width:480px){
+
+.pageHeader{
+
+padding:15px;
+
+}
+
+.pageHeader h1{
+
+font-size:1.6rem;
+
+}
+
+}

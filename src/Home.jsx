@@ -1,12 +1,5 @@
 import React from 'react'
-import VDIT from './assets/VDIT.jpg'
-import Sudhakar from './assets/Sudhakar.jpg'
-import Deepa from './assets/Deepa.jpg'
-import EngineerHuman from './assets/Engineer-Human.jpg'
-import MechanicalEngineering from './assets/Mechanical-Engineering.jpg'
-import Zenandtheartofmotorcyclemaintenance from './assets/Zen-and-the-art-of-motorcycle-maintenance.jpg'
 
-import LibraryImg from './assets/Library.jpg'
 import './App.css'
 const Home = () => {
   return (
@@ -15,7 +8,7 @@ const Home = () => {
         <header className='collegeHeader'><h1>Our College</h1></header>
 <h2>KLS VISHWANATHRAO DESHPANDE INSTITUTE OF TECHNOLOGY HALIYAL</h2>
       <div className='collegeInfo'>
-      <img src={VDIT} alt='KLS VDIT Haliyal' />
+<img src="/assets/VDIT.jpg" alt="VDIT" />
       <p>
   Welcome to the KLS Vishwanathrao Deshpande Institute of Technology Library
   Portal. Our library supports academic excellence by providing students and
@@ -34,7 +27,7 @@ const Home = () => {
   <div className='libSec'>
     <h2>Library</h2>
 
-    <img src={LibraryImg} alt='VDIT Library' />
+    <img src="/assets/Library.jpg" alt='VDIT Library' />
 
     <p>
       The Library at KLS Vishwanathrao Deshpande Institute of Technology,
@@ -96,13 +89,13 @@ const Home = () => {
     <h2> Our Librarians</h2>
     <div className='librarianList'>
         <div className='libAdminCard'>
-            <img src={Sudhakar} alt='Sudhakar(Librarian)' />
+            <img src="/assets/Sudhakar.jpg" alt='Sudhakar(Librarian)' />
             <p><span>Name: </span> Sudhakar</p>
             <p><span>Role: </span> Senior Librarian</p>
             <p><span>Id  : </span>REF89856VDIT2365</p>
         </div>
         <div className='libAdminCard'>
-            <img src={Deepa} alt='Deepa(Librarian)' />
+            <img src="/assets/Deepa.jpg" alt='Deepa(Librarian)' />
             <p><span>Name: </span> Deepa</p>
             <p><span>Role: </span> Assistant Librarian</p>
             <p><span>Id  : </span>REF65782VDIT7514</p>
@@ -113,17 +106,17 @@ const Home = () => {
     <h2>Popular Books we have</h2>
     <div className='bookCard'>
         <div>
-            <img src={EngineerHuman} alt="Engineer Human" />
+            <img src="/assets/Engineer-Human.jpg" alt="Engineer Human" />
             <p><span>Book Name:    </span>To Engineer Is Human</p>
             <p><span>Author Name:  </span>Henry Petroski</p>
         </div>
         <div>
-            <img src={MechanicalEngineering} alt="Mechanical Engineering " />
+            <img src="/assets/Mechanical-Engineering.jpg" alt="Mechanical Engineering " />
             <p><span>Book Name:    </span>Mechanical Engineering</p>
             <p><span>Author Name:  </span>Mark Huber</p>
         </div>
         <div>
-            <img src={Zenandtheartofmotorcyclemaintenance} alt="Zen And The Art Of Motorcycle Maintenance" />
+            <img src="/assets/Zen-and-the-art-of-motorcycle-maintenance.jpg" alt="Zen And The Art Of Motorcycle Maintenance" />
             <p><span>Book Name:    </span>Zen And The Art Of Motorcycle Maintenance</p>
             <p><span>Author Name:  </span>Robern M Pirsig</p>
         </div>
