@@ -43,7 +43,7 @@ export const updateStudent = async (req, res) => {
             { id: Number(req.params.id) },
             req.body,
             {
-                new: true,
+                returnDocument: "after",
                 runValidators: true
             }
         );

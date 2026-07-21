@@ -127,7 +127,7 @@ export const updateAdmin = async (req, res) => {
                 }
             },
             {
-                new: true,
+                 returnDocument: "after",
                 runValidators: true
             }
         );
