@@ -144,19 +144,17 @@ const AddAdminCard = ({ token, fetchAdmins }) => {
         onClick={addAdmin}
     >
         <FaPlus />
-        <span>Add</span>
     </button>
 
     <button
         type="button"
         className="cancelBtn"
-        onClick={()=>{
+        onClick={() => {
             setAdmin(initialState);
             setShowForm(false);
         }}
     >
         <FaTimes />
-        <span>Cancel</span>
     </button>
 
 </div>

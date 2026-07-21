@@ -934,6 +934,7 @@ to{ opacity:1; transform:translateY(0); }
 .adminFormCard input,
 .adminFormCard select{ padding:12px 14px; font-size:14px; }
 }
+
 /*=====================================================
         DASHBOARD ACTION BUTTONS
 ======================================================*/
@@ -1083,6 +1084,7 @@ to{ opacity:1; transform:translateY(0); }
     }
 
 }
+
 /*=====================================================
                 ADMIN EDIT FORM
 ======================================================*/
@@ -1120,4 +1122,52 @@ to{ opacity:1; transform:translateY(0); }
 .dashboardContainer{
     width:95%;
 }
+}
+
+
+/* =====================================================
+   Override AddAdmin / AddStudent Button Colors
+   Paste this at the END of Dashboard.css
+===================================================== */
+
+.studentFormButtons .addBtn,
+.adminFormButtons .addBtn{
+    background:#16A34A !important;
+    color:#fff !important;
+}
+
+.studentFormButtons .addBtn:hover,
+.adminFormButtons .addBtn:hover{
+    background:#15803D !important;
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(22,163,74,.3);
+}
+
+.studentFormButtons .cancelBtn,
+.adminFormButtons .cancelBtn{
+    background:#EF4444 !important;
+    color:#fff !important;
+}
+
+.studentFormButtons .cancelBtn:hover,
+.adminFormButtons .cancelBtn:hover{
+    background:#DC2626 !important;
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(239,68,68,.3);
+}
+
+.studentFormButtons .addBtn,
+.studentFormButtons .cancelBtn,
+.adminFormButtons .addBtn,
+.adminFormButtons .cancelBtn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex:1;
+    height:55px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:24px;
+    transition:all .3s ease;
 }
