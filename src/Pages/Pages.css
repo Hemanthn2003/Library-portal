@@ -517,3 +517,63 @@ font-size:1.6rem;
     }
 
 }
+
+
+
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 12px 45px 12px 12px;
+    box-sizing: border-box;
+}
+
+/* Hide Edge/IE default password reveal button */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* Hide the browser's password reveal button in browsers that support it */
+input::-ms-reveal {
+    display: none;
+}
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 12px 42px 12px 12px;
+    box-sizing: border-box;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    margin: 0;
+
+    color: #666;
+    font-size: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eye-icon:hover {
+    color: #29469c;
+}

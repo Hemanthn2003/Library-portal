@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "../Modal";
 
 const HeroSection = ({ admin }) => {
 
     const navigate = useNavigate();
+
+    const [modal, setModal] = useState({
+        isOpen: false,
+        title: "",
+        message: "",
+        type: "warning",
+        showCancel: false,
+        onConfirm: null
+    });
 
     const hour = new Date().getHours();
 
@@ -27,7 +37,22 @@ const HeroSection = ({ admin }) => {
 
     }
 
-    const logout = () => {
+    const closeModal = () => {
+
+        setModal({
+            isOpen: false,
+            title: "",
+            message: "",
+            type: "warning",
+            showCancel: false,
+            onConfirm: null
+        });
+
+    };
+
+    const confirmLogout = () => {
+
+        closeModal();
 
         localStorage.removeItem("token");
 
@@ -37,58 +62,97 @@ const HeroSection = ({ admin }) => {
 
     };
 
+    const logout = () => {
+
+        setModal({
+            isOpen: true,
+            title: "Logout",
+            message: "Are you sure you want to logout?",
+            type: "warning",
+            showCancel: true,
+            onConfirm: confirmLogout
+        });
+
+    };
+
     return (
 
-        <section className="heroSection">
+        <>
 
-            <div className="heroContent">
+            <section className="heroSection">
 
-                <div>
+                <div className="heroContent">
 
-                    <h3>
+                    <div>
 
-                        {greeting},
+                        <h3>
 
-                    </h3>
+                            {greeting},
 
-                    <h1>
+                        </h3>
 
-                        {admin.Name}
+                        <h1>
 
-                    </h1>
+                            {admin.Name}
 
-                    <h2>
+                        </h1>
 
-                        {admin.Role}
+                        <h2>
 
-                    </h2>
+                            {admin.Role}
 
-                    <p>
+                        </h2>
 
-                        Welcome back to your Library Management Portal.
+                        <p>
 
-                    </p>
+                            Welcome back to your Library Management Portal.
 
-                    <p>
+                        </p>
 
-                        "Knowledge is the key that unlocks every door."
+                        <p>
 
-                    </p>
+                            "Knowledge is the key that unlocks every door."
+
+                        </p>
+
+                    </div>
+
+                    <button
+                        className="logoutBtn"
+                        onClick={logout}
+                    >
+
+                        Logout
+
+                    </button>
 
                 </div>
 
-                <button
-                    className="logoutBtn"
-                    onClick={logout}
-                >
+            </section>
 
-                    Logout
+            <Modal
+                isOpen={modal.isOpen}
+                title={modal.title}
+                message={modal.message}
+                type={modal.type}
+                showCancel={modal.showCancel}
+                onOk={() => {
 
-                </button>
+                    if (modal.showCancel && modal.onConfirm) {
 
-            </div>
+                        modal.onConfirm();
 
-        </section>
+                    } else {
+
+                        closeModal();
+
+                    }
+
+                }}
+                onCancel={closeModal}
+            />
+
+        </>
 
     );
 

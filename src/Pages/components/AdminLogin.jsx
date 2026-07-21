@@ -1,67 +1,92 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Modal from "../Components/Modal";
 import "../Pages.css";
 
 const AdminLogin = () => {
-
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         Name: "",
-        Password: ""
+        Password: "",
     });
 
-    const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+
+    const [modal, setModal] = useState({
+        isOpen: false,
+        title: "",
+        message: "",
+        type: "success",
+        navigateAfter: false,
+    });
 
     const handleChange = (e) => {
-
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
-
     };
 
     const handleSubmit = async (e) => {
-
         e.preventDefault();
 
-        setError("");
-
         try {
-
             const res = await axios.post(
                 "http://localhost:5000/admin/login",
                 formData
             );
 
-            localStorage.setItem(
-                "token",
-                res.data.token
-            );
-
+            localStorage.setItem("token", res.data.token);
             localStorage.setItem(
                 "admin",
                 JSON.stringify(res.data.admin)
             );
 
-            navigate("/admin/dashboard");
+            setModal({
+                isOpen: true,
+                title: "Login Successful",
+                message: `Welcome ${res.data.admin.Name}!`,
+                type: "success",
+                navigateAfter: true,
+            });
+
+        } catch (err) {
+
+            setModal({
+                isOpen: true,
+                title: "Login Failed",
+                message:
+                    err.response?.data?.message ||
+                    "Invalid Username or Password.",
+                type: "error",
+                navigateAfter: false,
+            });
 
         }
+    };
 
-        catch (err) {
+    const handleModalOk = () => {
 
-            setError(
-                err.response?.data?.message || "Login Failed"
-            );
+        const shouldNavigate = modal.navigateAfter;
 
+        setModal({
+            isOpen: false,
+            title: "",
+            message: "",
+            type: "success",
+            navigateAfter: false,
+        });
+
+        if (shouldNavigate) {
+            navigate("/admin/dashboard");
         }
 
     };
 
     return (
-
         <div className="loginContainer">
 
             <form className="loginForm" onSubmit={handleSubmit}>
@@ -77,22 +102,25 @@ const AdminLogin = () => {
                     required
                 />
 
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    name="Password"
-                    value={formData.Password}
-                    onChange={handleChange}
-                    required
-                />
+                <div className="password-container">
 
-                {error &&
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter Password"
+                        name="Password"
+                        value={formData.Password}
+                        onChange={handleChange}
+                        required
+                    />
 
-                    <p className="error">
-                        {error}
-                    </p>
+                    <span
+                        className="eye-icon"
+                        onClick={() => setShowPassword(!showPassword)}
+                    >
+                        {showPassword ? <FaEye /> : <FaEyeSlash />}
+                    </span>
 
-                }
+                </div>
 
                 <button type="submit">
                     Login
@@ -100,10 +128,16 @@ const AdminLogin = () => {
 
             </form>
 
+            <Modal
+                isOpen={modal.isOpen}
+                title={modal.title}
+                message={modal.message}
+                type={modal.type}
+                onOk={handleModalOk}
+            />
+
         </div>
-
     );
-
 };
 
 export default AdminLogin;

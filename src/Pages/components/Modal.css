@@ -1,0 +1,118 @@
+.modalOverlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(5px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+}
+
+.modalBox{
+
+    width:360px;
+
+    background:white;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    text-align:center;
+
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.8);
+
+        opacity:0;
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+    }
+
+}
+
+.modalIcon{
+
+    font-size:45px;
+
+    margin-bottom:10px;
+}
+
+.success{
+
+    color:#2ecc71;
+}
+
+.error{
+
+    color:#e74c3c;
+}
+
+.warning{
+
+    color:#f39c12;
+}
+
+.info{
+
+    color:#3498db;
+}
+
+.modalButtons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-top:25px;
+}
+
+.okBtn{
+
+    background:#29469c;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 25px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+}
+
+.cancelBtn{
+
+    background:#999;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 25px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+}

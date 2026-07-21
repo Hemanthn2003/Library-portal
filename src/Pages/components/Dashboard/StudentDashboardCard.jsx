@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FaPen, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
-
+import Modal from "../Modal";
 const StudentDashboardCard = ({
     student,
     token,
@@ -12,6 +12,15 @@ const StudentDashboardCard = ({
 
     const [form, setForm] = useState({ ...student });
 
+    const [modal, setModal] = useState({
+        isOpen: false,
+        title: "",
+        message: "",
+        type: "success",
+        showCancel: false,
+        onConfirm: null
+    });
+
     const handleChange = (e) => {
 
         setForm({
@@ -19,6 +28,26 @@ const StudentDashboardCard = ({
             ...form,
 
             [e.target.name]: e.target.value
+
+        });
+
+    };
+
+    const closeModal = () => {
+
+        setModal({
+
+            isOpen: false,
+
+            title: "",
+
+            message: "",
+
+            type: "success",
+
+            showCancel: false,
+
+            onConfirm: null
 
         });
 
@@ -46,11 +75,23 @@ const StudentDashboardCard = ({
 
             );
 
-            alert("Student updated successfully.");
-
             setEditMode(false);
 
             fetchStudents();
+
+            setModal({
+
+                isOpen: true,
+
+                title: "Success",
+
+                message: "Student updated successfully.",
+
+                type: "success",
+
+                showCancel: false
+
+            });
 
         }
 
@@ -58,19 +99,49 @@ const StudentDashboardCard = ({
 
             console.log(err);
 
-            alert("Unable to update student.");
+            setModal({
+
+                isOpen: true,
+
+                title: "Error",
+
+                message:
+                    err.response?.data?.message ||
+                    "Unable to update student.",
+
+                type: "error",
+
+                showCancel: false
+
+            });
 
         }
 
     };
 
+    const confirmDelete = () => {
+
+        setModal({
+
+            isOpen: true,
+
+            title: "Delete Student",
+
+            message: "Are you sure you want to delete this student?",
+
+            type: "warning",
+
+            showCancel: true,
+
+            onConfirm: deleteStudent
+
+        });
+
+    };
+
     const deleteStudent = async () => {
 
-        const confirmDelete = window.confirm(
-            "Delete this student?"
-        );
-
-        if (!confirmDelete) return;
+        closeModal();
 
         try {
 
@@ -92,13 +163,41 @@ const StudentDashboardCard = ({
 
             fetchStudents();
 
+            setModal({
+
+                isOpen: true,
+
+                title: "Deleted",
+
+                message: "Student deleted successfully.",
+
+                type: "success",
+
+                showCancel: false
+
+            });
+
         }
 
         catch (err) {
 
             console.log(err);
 
-            alert("Unable to delete student.");
+            setModal({
+
+                isOpen: true,
+
+                title: "Error",
+
+                message:
+                    err.response?.data?.message ||
+                    "Unable to delete student.",
+
+                type: "error",
+
+                showCancel: false
+
+            });
 
         }
 
@@ -106,18 +205,15 @@ const StudentDashboardCard = ({
 
     return (
 
-        <div className="dashboardStudentCard">
+        <>
+                <div className="dashboardStudentCard">
 
             <div className="studentImageBox">
 
                 <img
-
                     src={`/assets/${student.Image}`}
-
                     alt={student.Name}
-
                     className="dashboardStudentImage"
-
                 />
 
             </div>
@@ -129,73 +225,45 @@ const StudentDashboardCard = ({
                     <div className="dashboardStudentInfo studentEditForm">
 
                         <input
-
                             name="Name"
-
                             value={form.Name}
-
                             onChange={handleChange}
-
                             placeholder="Name"
-
                         />
 
                         <input
-
                             name="Gender"
-
                             value={form.Gender}
-
                             onChange={handleChange}
-
                             placeholder="Gender"
-
                         />
 
                         <input
-
                             name="Dob"
-
                             value={form.Dob}
-
                             onChange={handleChange}
-
                             placeholder="Date of Birth"
-
                         />
 
                         <input
-
                             name="Class"
-
                             value={form.Class}
-
                             onChange={handleChange}
-
                             placeholder="Class"
-
                         />
 
                         <select
-
                             name="Subscription"
-
                             value={form.Subscription}
-
                             onChange={handleChange}
-
                         >
 
                             <option value="Active">
-
                                 Active
-
                             </option>
 
                             <option value="Inactive">
-
                                 Inactive
-
                             </option>
 
                         </select>
@@ -230,33 +298,23 @@ const StudentDashboardCard = ({
                     <div className="dashboardStudentInfo">
 
                         <h2>
-
                             {student.Name}
-
                         </h2>
 
                         <p>
-
                             <strong>ID :</strong> {student.id}
-
                         </p>
 
                         <p>
-
                             <strong>Gender :</strong> {student.Gender}
-
                         </p>
 
                         <p>
-
                             <strong>DOB :</strong> {student.Dob}
-
                         </p>
 
                         <p>
-
                             <strong>Class :</strong> {student.Class}
-
                         </p>
 
                         <p>
@@ -264,21 +322,13 @@ const StudentDashboardCard = ({
                             <strong>Status :</strong>
 
                             <span
-
                                 className={
-
                                     student.Subscription === "Active"
-
                                         ? "active"
-
                                         : "inactive"
-
                                 }
-
                             >
-
                                 {student.Subscription}
-
                             </span>
 
                         </p>
@@ -296,7 +346,7 @@ const StudentDashboardCard = ({
                             <button
                                 type="button"
                                 className="deleteBtn"
-                                onClick={deleteStudent}
+                                onClick={confirmDelete}
                             >
                                 <FaTrash />
                             </button>
@@ -308,6 +358,29 @@ const StudentDashboardCard = ({
             }
 
         </div>
+                <Modal
+            isOpen={modal.isOpen}
+            title={modal.title}
+            message={modal.message}
+            type={modal.type}
+            showCancel={modal.showCancel}
+            onOk={() => {
+
+                if (modal.showCancel && modal.onConfirm) {
+
+                    modal.onConfirm();
+
+                } else {
+
+                    closeModal();
+
+                }
+
+            }}
+            onCancel={closeModal}
+        />
+
+        </>
 
     );
 
