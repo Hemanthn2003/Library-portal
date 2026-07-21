@@ -1,11 +1,21 @@
-import React from 'react'
-import './Pages.css'
+import React from "react";
+import "./Pages.css";
+import { useLocation } from "react-router-dom";
+import AdminLogin from "./components/AdminLogin";
+import Dashboard from "./components/Dashboard";
 const Admin = () => {
-  return (
-    <div>
-      <p>Admin</p>
-    </div>
-  )
-}
 
-export default Admin
+    const location = useLocation();
+
+    return (
+        <>
+            {
+                location.pathname === "/admin"
+                    ? <AdminLogin />
+                    : <Dashboard />
+            }
+        </>
+    );
+};
+
+export default Admin;
